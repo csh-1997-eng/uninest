@@ -1,16 +1,18 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  rewrites: async () => {
-    return [
-      {
-        source: '/api/:path*',
-        destination:
-          process.env.NODE_ENV === 'development'
-            ? 'http://127.0.0.1:5328/api/:path*'
-            : '/api/',
-      },
-    ]
-  },
-}
+const nextConfig = {}
+
+module.exports = () => {
+    const rewrites = () => {
+      return [
+        {
+          source: "/resident-sign-up/:path*",
+          destination: "http://localhost:5000/resident-sign-up/:path*",
+        },
+      ];
+    };
+    return {
+      rewrites,
+    };
+  };
 
 module.exports = nextConfig
